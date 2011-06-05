@@ -1,0 +1,27 @@
+= flickr sync
+
+This is a command line utility to synchronise a folder containing images with flickr.
+
+= Usage
+
+Here you sit expectantly in front of a computer at the command line.
+
+== Install
+
+  gem install flickr_synch_
+
+== Launch
+
+  flickr_sync --help
+
+By default, this will check whether a photo with the same title already exists.  If you specify the --optimistic flag, the duplicate check will be skipped.
+
+All photos will be uploaded with visibility limited to family and titles will be the same as the file name.
+
+The past uploads will be stored in a file called written.txt and any duplicates (ie. more than one copy of the same image found on flickr) will be stored in a file called duplicates.txt.
+
+= Future plans for world domination
+
+* Perhaps use absolute paths for file names 
+* Replace hideous find command with a path iterator
+* Handle videos
