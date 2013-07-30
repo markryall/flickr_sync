@@ -14,7 +14,7 @@ EOF
   spec.executables << 'flickr_sync'
 
   spec.add_dependency 'clamp', '~>0'
-  spec.add_dependency 'fleakr', '~>0'
+  spec.add_dependency 'flickraw', '~>0'
   spec.add_dependency 'splat', '~>0'
 
   spec.add_development_dependency 'rake', '~>0'
