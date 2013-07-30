@@ -6,6 +6,7 @@ require 'splat'
 module FlickrSync
   class Cli < Clamp::Command
     attr_reader :preferences
+    attr_reader :prompt
 
     # option "--optimistic", :flag, "assume there are no duplicates"
     parameter "DIRECTORY_PATH", "the folder containing images"
@@ -38,7 +39,7 @@ module FlickrSync
 
     def execute
       @preferences = FlickrSync::Preferences.new
-      prompt = FlickrSync::Prompt.new STDIN, STDOUT
+      @prompt = FlickrSync::Prompt.new STDIN, STDOUT
 
       FlickRaw.api_key = api_key
       FlickRaw.shared_secret = shared_secret
