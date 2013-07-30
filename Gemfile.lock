@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    flickr_sync (0.0.1)
+    flickr_sync (0.0.2)
       clamp (~> 0)
       flickraw (~> 0)
       splat (~> 0)
