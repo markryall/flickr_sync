@@ -60,7 +60,7 @@ module FlickrSync
       written_path = File.join directory_path, 'written.txt'
       duplicates_path = File.join directory_path, 'duplicates.txt'
 
-      allfiles = `find #{directory_path}/*`.split("\n").select {|p| ['.jpg', '.gif', '.m4v'].include? File.extname(p).downcase}
+      allfiles = `find "#{directory_path}"`.split("\n").select {|p| ['.jpg', '.gif', '.m4v'].include? File.extname(p).downcase}
       puts "Found #{allfiles.count} image files"
       writtenfiles = load_list written_path
       puts "Found #{writtenfiles.count} previously sent files"
