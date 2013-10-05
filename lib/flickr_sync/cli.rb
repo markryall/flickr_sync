@@ -5,10 +5,14 @@ require 'splat'
 
 module FlickrSync
   class Cli < Clamp::Command
+    IMAGES_ONLY = %w{.jpg .gif .m4v}
+    IMAGES_AND_VIDEO = IMAGES_ONLY + %w{.mp4 .mov}
+
     attr_reader :preferences
     attr_reader :prompt
 
     # option "--optimistic", :flag, "assume there are no duplicates"
+    option "--video", :flag, "include videos"
     parameter "DIRECTORY_PATH", "the folder containing images"
 
     def api_key
@@ -60,8 +64,10 @@ module FlickrSync
       written_path = File.join directory_path, 'written.txt'
       duplicates_path = File.join directory_path, 'duplicates.txt'
 
-      allfiles = `find "#{directory_path}"`.split("\n").select {|p| ['.jpg', '.gif', '.m4v'].include? File.extname(p).downcase}
-      puts "Found #{allfiles.count} image files"
+      file_extensions = video? ? IMAGES_AND_VIDEO : IMAGES_ONLY
+
+      allfiles = `find "#{directory_path}"`.split("\n").select {|p| file_extensions.include? File.extname(p).downcase}
+      puts "Found #{allfiles.count} #{video? ? 'image/video' : 'image'} files"
       writtenfiles = load_list written_path
       puts "Found #{writtenfiles.count} previously sent files"
       newfiles = allfiles - writtenfiles

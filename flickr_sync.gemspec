@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = 'flickr_sync'
-  spec.version = '0.0.4'
+  spec.version = '0.0.5'
   spec.summary = 'command line utility to synch a folder with flickr'
   spec.description = <<-EOF
 Flickr is a very effective way to backup lots of images but the upload tools are all pretty awful.
