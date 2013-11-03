@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH << File.dirname(__FILE__)+'/../lib'
-require 'flickr_sync/sync'
-FlickrSync::Sync.run
+require 'flickr_sync/upload'
+FlickrSync::Upload.run
